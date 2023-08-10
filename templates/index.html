@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extractor</title>
+  </head>
+  <body>
+
+      <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav_wrapper">
+          <h2>CruxCreates</h2>
+          <ion-icon class="logo" name="planet"></ion-icon>
+        </div>
+      </nav>
+
+    <div class="text">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <h4 class="form_p">What's Important?</h4>
+            <textarea name="full_text" id="" placeholder="Enter your text, let me find out the important sentences." cols="30" rows="10" required></textarea>
+            <div class="submit_btn">                  
+              <button type="submit">Extract</button>
+            </div>
+          </form>
+    </div>
+
+          <div class="display">
+            {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'info' %}
+              <div class="full_text" data-aos="fade-left" data-aos-duration="3000" >
+                <h3>Your Original text</h3>
+                <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h5>
+              </div>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'success' %}
+              <div class="summary" data-aos="fade-right" data-aos-duration="3000" >
+                <h3>Your summarized text</h3>
+                <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h5>
+              </div>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+
+
+
+            {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <h2 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h2>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+
+          </div>
+
+              <footer class="footer">
+                <div class="container">
+                  <div class="footer_row">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="bio">
+                      <ion-icon class="logo" name="planet"></ion-icon>
+                      <h5 class="white-text">Company Bio</h5>
+                      <p class="grey-text text-lighten-4">I'm Hafeez, a web developer, a machine learning engineer and an aspiring
+                        Systems and Robotics Engineer. CruxCreates, is
+                        an innovative to interact with Artificial Intelligence and bring AI to your finger tips. Definitely keep tabs
+                        on this
+                        space, as huge things are coming.</p>
+              
+              
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="3000" class="connect">
+                      <ion-icon class="logo" name="people"></ion-icon>
+                      <h5 class="white-text">Connect with me</h5>
+                      <ul>
+                        <li><a class="white-text" href='mailto:abdulhafeezlasisi@gmail.com'><ion-icon name="mail"
+                              class="nav_msil"></ion-icon></a></li>
+                        <li><a class="white-text" href="https://twitter.com/theonlyCrux"><ion-icon name="logo-twitter"
+                              class="nav_msil"></ion-icon></a></li>
+                        <li><a class="white-text" href="https://www.linkedin.com/mwlite/in/abdulhafeez-lasisi-b1b379248">
+                          <ion-icon name="logo-linkedin" class="nav_msil"></ion-icon></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                    <p>&copy; 2023 AbdulHafeez Lasisi, CruxCreates.</p>
+                  </div>
+                </div>
+              </footer>
+              
+              
+              <!--  Scripts-->
+              
+              <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+              <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+              
+              <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+              <script>
+                AOS.init({
+                  once: true,
+                  opacity: 1,
+                  duration: 3000,
+                  offset: true
+                });
+              </script>
+              
+              <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inter&family=Lexend+Deca:wght@400;700&display=swap');
+              
+                body {
+                  background: #111;
+                  margin: auto;
+                  font-family: 'Lexend Deca', sans-serif;
+                  color: white;
+                  margin: 0;
+                  position: relative;
+                }
+
+                form{
+                  text-align: center;
+                }
+              
+                .container {
+                  text-align: center;
+                }
+              
+                .center {
+                  margin-top: 20%;
+                }
+              
+                h1 {
+                  font-size: 50px;
+                }
+              
+                h5 {
+                  font-size: 20px;
+                }
+              
+                .row {
+                  margin-left: 20%;
+                  margin-right: 20%;
+                  margin-bottom: 30px;
+                }
+              
+                .nav_wrapper {
+                  background-color: white;
+                  color: #111;
+                  display: flex;
+                  justify-content: space-around;
+                  align-items: center;
+                  font-size: 30px;
+                  text-shadow:
+                    0 0 4px #000,
+                    0 0 11px #000,
+                    0 0 19px #000,
+                    0 0 40px rgba(0, 255, 170, 0.677),
+                    0 0 80px rgba(0, 255, 170, 0.677),
+                    0 0 90px rgba(0, 255, 170, 0.677),
+                    0 0 100px rgba(0, 255, 170, 0.677),
+                    0 0 150px rgba(0, 255, 170, 0.677);
+
+                    animation: flicker 1.5s infinite alternate;
+
+                }
+
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #000,
+      0 0 11px #000,
+      0 0 19px #000,
+      0 0 40px rgba(0, 255, 170, 0.377),
+      0 0 80px rgba(0, 255, 170, 0.377),
+      0 0 90px rgba(0, 255, 170, 0.377),
+      0 0 100px rgba(0, 255, 170, 0.377),
+      0 0 150px rgba(0, 255, 170, 0.377);
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}
+                .logo {
+                  font-size: 35px;
+                  margin: 10px;
+                }
+              
+                .input {
+                  margin-top: 60px;
+                  margin-bottom: 60px;
+                }
+              
+                textarea {
+                  background: #ecf0f3;
+                  margin: 30px;
+                  padding: 30px;
+                  padding-left: 20px;
+                  height: 360px;
+                  width: 70%;
+                  font-size: 20px;
+                  font-family: 'Lexend Deca', sans-serif;
+                  border-radius: 50px;
+                  /* box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white; */
+                }
+              
+                .input b {
+                  font-size: 23px;
+                  margin-bottom: 7px;
+                }
+              
+                .submit_btn button {
+                  font-family: 'Lexend Deca', sans-serif;
+                  height: 90px;
+                  width: 30%;
+                  border-radius: 50px;
+                  cursor: pointer;
+                  font-size: 24px;
+                  background-color: #36454F;
+                  color: white;
+                  padding: 0;
+                  border: 0;
+                }
+                h3{
+                  font-size: 36px;
+                }
+              
+                .submit_btn button:hover {
+                  background-color: white;
+                  color: #36454F;
+                  width: 33%;
+                  border-radius: 50px;
+                  transition: all 0.3s ease-in-out;
+                }
+              
+                .footer_row {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin-left: 10%;
+                  margin-right: 10%;
+                  margin-top: 30px;
+                  margin-bottom: 80px;
+                }
+              
+                .bio {
+                  height: fit-content;
+                  padding: 5px;
+                  width: 50%;
+                  background-color: white;
+                  color: #36454F;
+                  margin-right: 23%;
+                  padding: 20px;
+                  border-radius: 15px;
+                  letter-spacing: 0.05em;
+                  transition: 0.5s;
+                  -webkit-mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  -webkit-mask-size: 800%;
+                  mask-size: 800%;
+                  -webkit-mask-position: 0;
+                  mask-position: 0;
+                }
+                .bio:hover{
+                      transition: mask-position 2s ease,-webkit-mask-position 2s ease;
+                    -webkit-mask-position: 120%;
+                    mask-position: 120%;
+                    opacity: 1;                  
+                }
+              
+                ul {
+                  list-style: none;
+                }
+                ul li{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  transition: 0.5s;
+                }
+              
+                .connect {
+                  height: fit-content;
+                  width: 50%;
+                  background-color: white;
+                  color: #36454F;
+                  padding: 20px;
+                  border-radius: 15px;
+                  -webkit-mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  -webkit-mask-size: 800%;
+                  mask-size: 800%;
+                  -webkit-mask-position: 0;
+                  mask-position: 0;
+                }
+                .connect:hover{
+                      transition: mask-position 2s ease,-webkit-mask-position 2s ease;
+                    -webkit-mask-position: 120%;
+                    mask-position: 120%;
+                    opacity: 1;
+                }
+              
+                .nav_msil {
+                  text-align: center;
+                  font-size: 40px;
+                  margin: 10px;
+                  color: #36454F;
+                }
+                .nav_msil:hover{
+                  color: black;
+                  font-size: 45px;
+                }
+
+                .summary{
+                  text-align: center;
+                  margin: 70px;
+                }
+                .full_text{
+                  text-align: center;
+                  margin: 70px;
+                }
+
+                .form_p{
+                  font-size: 50px;
+                  text-shadow: 4px 4px 0px #000, 
+                    -4px 0 0px #000,
+                    7px 4px 0 #fff;
+                  /* text-shadow: 
+                    0 2px 2px #dfdfdf, 
+                    -2px 5px 1px #b8b8b8, 
+                    -4px 8px 0px #979797, 
+                    -6px 11px 0px #747474,
+                    -8px 14px 0px #565656,
+                    -10px 17px 0px #343434,
+                    -12px 20px 0px #171717,
+                    -14px 23px 0px #000; */
+
+
+                }
+
+                .success {
+                  color: black;
+                  height: fit-content;
+                  width:fit-content;
+                  background-color:white;
+                  padding: 30px;
+                  border-radius: 30px;
+                  -webkit-mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  -webkit-mask-size: 800%;
+                  mask-size: 800%;
+                  -webkit-mask-position: 0;
+                  mask-position: 0;
+                }
+                .success:hover{
+                      transition: mask-position 2s ease,-webkit-mask-position 2s ease;
+                    -webkit-mask-position: 120%;
+                    mask-position: 120%;
+                    opacity: 1;
+                }
+
+                .error{
+                  color: red;
+                  text-align: center;
+                  margin: 50px;
+                }
+                
+                .info{
+                  color: black;
+                  height: fit-content;
+                  width:fit-content;
+                  background-color:white;
+                  padding: 30px;
+                  border-radius: 50px;
+                  -webkit-mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  mask-image: linear-gradient(45deg,#000 25%,rgba(0,0,0,.2) 50%,#000 75%);
+                  -webkit-mask-size: 800%;
+                  mask-size: 800%;
+                  -webkit-mask-position: 0;
+                  mask-position: 0;
+                }
+                .info:hover{
+                      transition: mask-position 2s ease,-webkit-mask-position 2s ease;
+                    -webkit-mask-position: 120%;
+                    mask-position: 120%;
+                    opacity: 1;
+                }
+                
+                /* .display{
+                  display: flex;
+                  flex-wrap: wrap;
+                } */
+              
+                /* .nav_msil:hover{
+                    color: red;
+                  } */
+
+                   @media (min-width: 1790px) {
+                    .display{
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+                  .success {
+                    height: fit-content;
+                    width: 90%;
+                    color: black;
+                    background-color:white;
+                    padding: 30px;
+                    box-shadow: inset 6px 6px 6px #111, inset -6px -6px 6px black;
+                    border-radius: 30px;
+                    text-align: center;
+                  }
+                  .info {
+                    height: fit-content;
+                    width: 90%;
+                    color: black;
+                    background-color:white;
+                    padding: 30px;
+                    box-shadow: inset 6px 6px 6px #111, inset -6px -6px 6px black;
+                    border-radius: 30px;
+                    text-align: center;
+                  }
+                .full_text{
+                  text-align: center;
+                }
+                .summary{
+                  text-align: center;
+                }}
+
+              </style>
+  </body>
+</html>
