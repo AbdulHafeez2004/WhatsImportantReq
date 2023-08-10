@@ -9,7 +9,7 @@ cymem==2.0.7
 jinja2==3.1.2
 langcodes==3.3.0
 murmurhash==1.0.9
-numpy==1.22.4
+numpy==1.21.6
 packaging==21.3
 pathy==0.10.2
 preshed==3.0.8
